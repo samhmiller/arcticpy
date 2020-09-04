@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def set_min_max(value, min, max):
     """ Fix a value between a minimum and maximum. """
     if value < min:
@@ -17,7 +20,7 @@ def update_fits_header_info(
     parallel_ccd_volume=None,
     serial_ccd_volume=None,
 ):
-    """Update a fits header to include the parallel CTI settings.
+    """ Update a fits header to include the parallel CTI settings.
 
     Params
     -----------
@@ -31,9 +34,6 @@ def update_fits_header_info(
             parallel_clocker.iterations,
             "Iterations Used In Correction (Parallel)",
         )
-        # ext_header.set(
-        #     "cte_pwld", parallel_clocker.well_depth, "CCD Well Depth (Parallel)"
-        # )
 
     if serial_clocker is not None:
         ext_header.set(
@@ -41,9 +41,6 @@ def update_fits_header_info(
             serial_clocker.iterations,
             "Iterations Used In Correction (Serial)",
         )
-        # ext_header.set(
-        #     "cte_swld", serial_clocker.well_depth, "CCD Well Depth (Serial)"
-        # )
 
         def add_trap(name, traps):
             for i, trap in traps:
