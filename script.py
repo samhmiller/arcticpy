@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from arctic.main import add_cti
-from arctic.roe import ROE
-from arctic.ccd import CCD
-from arctic.traps import Trap
+from arcticpy.main import add_cti
+from arcticpy.roe import ROE
+from arcticpy.ccd import CCD
+from arcticpy.traps import Trap
 
 # Make input image
 image = np.zeros((100, 100))
@@ -15,7 +15,7 @@ parallel_roe = ROE()
 # Instantiate ccd
 parallel_ccd = CCD()
 # Instantiate trap
-parallel_trap = Trap(density=0.5, release_timescale=.50, capture_timescale=0.1)
+parallel_trap = Trap(density=0.99, release_timescale=.50, capture_timescale=0.1)
 
 # Add cti
 out = add_cti(image,
