@@ -27,3 +27,4 @@
 *tmp*
 *debug*
 test_arcticpy/*test*.txt
+.vscode/launch.json
