@@ -11,9 +11,9 @@ image = np.zeros((10, 10))
 image[[1, 2, 3], [1, 2, 3]] = 1
 
 # ROE, CCD, and trap species parameters
-ccd = CCD(well_fill_power=0.5, full_well_depth=1e5)
+ccd = CCD(well_fill_power=0.5, full_well_depth=1e4)
 roe = ROE()
-trap = Trap(density=3, release_timescale=0.5)
+trap = Trap(density=3, release_timescale=1)
 
 # Add cti
 added = add_cti(
@@ -21,17 +21,25 @@ added = add_cti(
     parallel_express=0,
     parallel_roe=roe,
     parallel_ccd=ccd,
-    parallel_traps=[trap]
+    parallel_traps=[trap],
+    serial_express=0,
+    serial_roe=roe,
+    serial_ccd=ccd,
+    serial_traps=[trap]
 )
 
 # Remove cti
 removed = remove_cti(
-    image,
-    iterations=1,
+    added,
+    iterations=10,
     parallel_express=0,
     parallel_roe=roe,
     parallel_ccd=ccd,
-    parallel_traps=[trap]
+    parallel_traps=[trap],
+    serial_express=0,
+    serial_roe=roe,
+    serial_ccd=ccd,
+    serial_traps=[trap]
 )
 
 # Plot output
